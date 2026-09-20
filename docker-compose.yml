@@ -3,15 +3,18 @@ services:
   frontend:
     build:
       context: ./frontend
+    image: ${DOCKERHUB_USERNAME}/devops-frontend:latest
     container_name: devops-frontend
     ports:
       - "3000:80"
     depends_on:
       - gateway
+    restart: unless-stopped
 
   gateway:
     build:
       context: ./backend/gateway
+    image: ${DOCKERHUB_USERNAME}/devops-gateway:latest
     container_name: devops-gateway
     ports:
       - "8000:8000"
@@ -21,17 +24,22 @@ services:
     depends_on:
       - users-service
       - tasks-service
+    restart: unless-stopped
 
   users-service:
     build:
       context: ./backend/users-service
+    image: ${DOCKERHUB_USERNAME}/devops-users-service:latest
     container_name: devops-users-service
     ports:
       - "8001:8000"
+    restart: unless-stopped
 
   tasks-service:
     build:
       context: ./backend/tasks-service
+    image: ${DOCKERHUB_USERNAME}/devops-tasks-service:latest
     container_name: devops-tasks-service
     ports:
       - "8002:8000"
+    restart: unless-stopped
