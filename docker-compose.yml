@@ -3,7 +3,7 @@ services:
   frontend:
     build:
       context: ./frontend
-    image: ghcr.io/${GHCR_OWNER}/devops-frontend:latest
+    image: ghcr.io/eronsalih/devops-frontend:latest
     container_name: devops-frontend
     ports:
       - "3000:80"
@@ -14,7 +14,7 @@ services:
   gateway:
     build:
       context: ./backend/gateway
-    image: ghcr.io/${GHCR_OWNER}/devops-gateway:latest
+    image: ghcr.io/eronsalih/devops-gateway:latest
     container_name: devops-gateway
     ports:
       - "8000:8000"
@@ -29,7 +29,7 @@ services:
   users-service:
     build:
       context: ./backend/users-service
-    image: ghcr.io/${GHCR_OWNER}/devops-users-service:latest
+    image: ghcr.io/eronsalih/devops-users-service:latest
     container_name: devops-users-service
     ports:
       - "8001:8000"
@@ -38,7 +38,7 @@ services:
   tasks-service:
     build:
       context: ./backend/tasks-service
-    image: ghcr.io/${GHCR_OWNER}/devops-tasks-service:latest
+    image: ghcr.io/eronsalih/devops-tasks-service:latest
     container_name: devops-tasks-service
     ports:
       - "8002:8000"
